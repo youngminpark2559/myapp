@@ -119,13 +119,20 @@ def videolistwithMp3list(startpage, lastpage):
             refinedaddressPageContents = refinedaddressPage.content
             soupForrefinedaddressPageContents = BeautifulSoup(refinedaddressPageContents, "html.parser")
             
+            # I find mp3 address by index
+            # mediaList = soupForrefinedaddressPageContents.find_all("div", {"class":"download"})
+            # for media in mediaList:
+            #     mp3Address = media.select('li > a[href]')
+            #     splitedByHref = str(mp3Address[0]).split('href')
+            #     oneMp3 = str(splitedByHref).strip().split('>')[0].split('\'="')[1].replace('mp3"', 'mp3')
+            #     print(oneMp3)
+
+            # I find mp3 address by regular expression
             mediaList = soupForrefinedaddressPageContents.find_all("div", {"class":"download"})
             for media in mediaList:
-                mp3Address = media.select('li > a[href]')
-                splitedByHref = str(mp3Address[0]).split('href')
-                oneMp3 = str(splitedByHref).strip().split('>')[0].split('\'="')[1].replace('mp3"', 'mp3')
-                print(oneMp3)
-
+                mediaAddress = str(media.select('li > a[href]'))
+                extractedMp3 = re.match('.*(mp3)', mediaAddress).group(0)
+                print(str(extractedMp3).split('href="')[1])
 
 if __name__ == '__main__':
     titleNonTitleMp3 = int(input('video list+title(1), video list(2), video list+mp3 list(3): '))
@@ -140,7 +147,7 @@ if __name__ == '__main__':
     elif titleNonTitleMp3 == 3:
         startpage = input('start page: ')
         lastpage = input('last page: ')
-        videolistwithMp3list(startpage, lastpage)
+        videolistwithMp3list(startpage, lastpage)                                             
       </xmp>
    </BODY>
 </HTML>
