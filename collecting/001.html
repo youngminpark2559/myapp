@@ -67,7 +67,9 @@ def videolistwithtitle(startpage,lastpage):
         videolist=soup.select('h3 > a[href]')
         print('\npage'+str(i))
         for onevideo in videolist:
-            refinedaddress = str(onevideo).replace('<a href="', 'https://channel9.msdn.com/').replace('">',  '\nabove video\'s title : ').replace('</a>','')
+            refinedaddress = str(onevideo).replace('<a href="', 'https://channel9.msdn.com/')\
+               .replace('">',  '\nabove video\'s title : ')\
+               .replace('</a>','')
             print(refinedaddress)
 
 def videolistwithouttitle(startpage, lastpage):
@@ -85,7 +87,9 @@ def videolistwithouttitle(startpage, lastpage):
         listHolder = []
 
         for onevideo in videolist:
-            refinedaddress = str(onevideo).replace('<a href="', 'https://channel9.msdn.com/').replace('">',  '\nabove video\'s title : ').replace('</a>','')
+            refinedaddress = str(onevideo).replace('<a href="', 'https://channel9.msdn.com/')\
+               .replace('">',  '\nabove video\'s title : ')\
+               .replace('</a>','')
             listremovedtitle = re.sub(r'(above video).*', '', refinedaddress)
             print(listremovedtitle)
             
