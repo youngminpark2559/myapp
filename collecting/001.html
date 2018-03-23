@@ -1,53 +1,3 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
-   "http://www.w3.org/TR/html4/strict.dtd">
-<HTML>
-   <HEAD>
-      <TITLE>My first HTML document</TITLE>
-      <style rel="stylesheet" type="text/css">
-body {
- font-size: 25px;
- 
- margin-top: 50px;
-    margin-bottom: 50px;
-    margin-right: 80px;
-    margin-left: 80px;
-    
-    padding-top: 50px;
-    padding-bottom: 50px;
-    padding-right: 80px;
-    padding-left: 80px;
-    
-    line-height:1.6em
-}
-</style>
-      <script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    "HTML-CSS" : {
-        availableFonts : ["STIX"],
-        preferredFont : "STIX",
-        webFont : "STIX-Web",
-        imageFont : null
-    }
-});
-</script>
-     <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js" type="text/javascript">    
-    MathJax.Hub.Config({
-        HTML: ["input/TeX","output/HTML-CSS"],
-        TeX: { extensions: ["AMSmath.js","AMSsymbols.js"], 
-               equationNumbers: { autoNumber: "AMS" } },
-        extensions: ["tex2jax.js"],
-        jax: ["input/TeX","output/HTML-CSS"],
-        tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-                   displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
-                   processEscapes: true },
-        "HTML-CSS": { availableFonts: ["TeX"],
-                      linebreaks: { automatic: true } }
-    });
-</script>
-   </HEAD>
-   <BODY>
-001. Getting video address from channel9 site
-<xmp>
 import requests
 from bs4 import BeautifulSoup
 import json
@@ -68,9 +18,11 @@ def videolistwithtitle(startpage,lastpage):
         print('\npage'+str(i))
         for onevideo in videolist:
             refinedaddress = str(onevideo).replace('<a href="', 'https://channel9.msdn.com/')\
-               .replace('">',  '\nabove video\'s title : ')\
-               .replace('</a>','')
+            .replace('">',  '\nabove video\'s title : ').replace('</a>','')
             print(refinedaddress)
+
+            
+
 
 def videolistwithouttitle(startpage, lastpage):
     for i in list(range(int(startpage), int(lastpage)+1)):
@@ -92,18 +44,50 @@ def videolistwithouttitle(startpage, lastpage):
                .replace('</a>','')
             listremovedtitle = re.sub(r'(above video).*', '', refinedaddress)
             print(listremovedtitle)
+                    
+def videolistwithMp3list(startpage, lastpage):
+    for i in list(range(int(startpage), int(lastpage)+1)):
+        addressholder = []
+        url = 'https://channel9.msdn.com/Browse/AllContent?page='+str(i)+'&lang=en'
+        r=requests.get(url)
+        c=r.content
+        soup=BeautifulSoup(c, "html.parser")
+        # re = BeautifulSoup(r.text)
+
+        videolist=soup.select('h3 > a[href]')
+        print('\npage'+str(i))
+
+
+        for onevideo in videolist:
+            refinedaddress = str(onevideo).replace('<a href="', 'https://channel9.msdn.com/')\
+            .replace('">',  '\nabove video\'s title : ')\
+            .replace('</a>','')
+            listremovedtitle = re.sub(r'(above video).*', '', refinedaddress).strip()
+            print(listremovedtitle)
             
+            refinedaddressPage=requests.get(listremovedtitle)
+            refinedaddressPageContents = refinedaddressPage.content
+            soupForrefinedaddressPageContents = BeautifulSoup(refinedaddressPageContents, "html.parser")
+            
+            mediaList = soupForrefinedaddressPageContents.find_all("div", {"class":"download"})
+            for media in mediaList:
+                mp3Address = media.select('li > a[href]')
+                splitedByHref = str(mp3Address[0]).split('href')
+                oneMp3 = str(splitedByHref).strip().split('>')[0].split('\'="')[1].replace('mp3"', 'mp3')
+                print(oneMp3)
+
 
 if __name__ == '__main__':
-    titleornontitle = int(input('video list with title(1), video list without title(2): '))
-    if titleornontitle == 1:
+    titleNonTitleMp3 = int(input('video list+title(1), video list(2), video list+mp3 list(3): '))
+    if titleNonTitleMp3 == 1:
         startpage = input('start page: ')
         lastpage = input('last page: ')
         videolistwithtitle(startpage, lastpage)
-    else:
+    elif titleNonTitleMp3 == 2:
         startpage = input('start page: ')
         lastpage = input('last page: ')
         videolistwithouttitle(startpage, lastpage)
-      </xmp>
-   </BODY>
-</HTML>
+    elif titleNonTitleMp3 == 3:
+        startpage = input('start page: ')
+        lastpage = input('last page: ')
+        videolistwithMp3list(startpage, lastpage)
