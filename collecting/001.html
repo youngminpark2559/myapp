@@ -37,8 +37,8 @@ MathJax.Hub.Config({
                equationNumbers: { autoNumber: "AMS" } },
         extensions: ["tex2jax.js"],
         jax: ["input/TeX","output/HTML-CSS"],
-        tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-                   displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        tex2jax: { inlineMath: [ ['$$$','$$$'] ],
+                   displayMath: [ ['$$$$','$$$$'] ],
                    processEscapes: true },
         "HTML-CSS": { availableFonts: ["TeX"],
                       linebreaks: { automatic: true } }
@@ -52,8 +52,6 @@ import requests
 from bs4 import BeautifulSoup
 import json
 import re
-
-
 
 def videolistwithtitle(startpage,lastpage):
     for i in list(range(int(startpage), int(lastpage)+1)):
@@ -70,9 +68,6 @@ def videolistwithtitle(startpage,lastpage):
             refinedaddress = str(onevideo).replace('<a href="', 'https://channel9.msdn.com/')\
             .replace('">',  '\nabove video\'s title : ').replace('</a>','')
             print(refinedaddress)
-
-            
-
 
 def videolistwithouttitle(startpage, lastpage):
     for i in list(range(int(startpage), int(lastpage)+1)):
@@ -131,7 +126,10 @@ def videolistwithMp3list(startpage, lastpage):
             mediaList = soupForrefinedaddressPageContents.find_all("div", {"class":"download"})
             for media in mediaList:
                 mediaAddress = str(media.select('li > a[href]'))
-                extractedMp3 = re.match('.*(mp3)', mediaAddress).group(0)
+                try:
+                    extractedMp3 = re.match('.*(mp3)', mediaAddress).group(0)
+                except:
+                    pass
                 print(str(extractedMp3).split('href="')[1])
 
 if __name__ == '__main__':
@@ -147,7 +145,7 @@ if __name__ == '__main__':
     elif titleNonTitleMp3 == 3:
         startpage = input('start page: ')
         lastpage = input('last page: ')
-        videolistwithMp3list(startpage, lastpage)                                             
+        videolistwithMp3list(startpage, lastpage)
       </xmp>
    </BODY>
 </HTML>
