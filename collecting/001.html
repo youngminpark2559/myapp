@@ -46,7 +46,7 @@ MathJax.Hub.Config({
 </script>
    </HEAD>
    <BODY>
-001. Getting media address from channel9 site
+001. collect media address from channel9 site
 <xmp>
 import requests
 from bs4 import BeautifulSoup
@@ -102,13 +102,12 @@ def videolistwithMp3list(startpage, lastpage):
         videolist=soup.select('h3 > a[href]')
         print('\npage'+str(i))
 
-
         for onevideo in videolist:
             refinedaddress = str(onevideo).replace('<a href="', 'https://channel9.msdn.com/')\
             .replace('">',  '\nabove video\'s title : ')\
             .replace('</a>','')
             listremovedtitle = re.sub(r'(above video).*', '', refinedaddress).strip()
-            print(listremovedtitle)
+            # print(listremovedtitle)
             
             refinedaddressPage=requests.get(listremovedtitle)
             refinedaddressPageContents = refinedaddressPage.content
@@ -128,9 +127,9 @@ def videolistwithMp3list(startpage, lastpage):
                 mediaAddress = str(media.select('li > a[href]'))
                 try:
                     extractedMp3 = re.match('.*(mp3)', mediaAddress).group(0)
+                    print(str(extractedMp3).split('href="')[1])
                 except:
                     pass
-                print(str(extractedMp3).split('href="')[1])
 
 if __name__ == '__main__':
     titleNonTitleMp3 = int(input('video list+title(1), video list(2), video list+mp3 list(3): '))
