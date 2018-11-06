@@ -66,7 +66,7 @@ line="""
 
 3. Write save place of being created html file to main.py  
 For example,  
-sp_hf="/home/young"
+sp_hf="/home/my_com"
 
 4. Run main.py  
 1\) Move to directory where main.py is stored  
