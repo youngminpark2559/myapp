@@ -2,7 +2,8 @@
 1. pip install json2html==1.2.1
 
 # Support format
-1. Space
+1. Space  
+<pre><code>
 line="""
 181031 Wed
 09,24 Act1
@@ -17,8 +18,10 @@ line="""
 
 13,56 Act5
 """
+</code></pre>
 
-2. Compact
+2. Compact  
+<pre><code>
 line="""
 181031 Wed
 09,24 Act1
@@ -28,8 +31,10 @@ line="""
 13,56 Act4
 13,56 Act5
 """
+</code></pre>
 
-3. Mixed
+3. Mixed  
+<pre><code>
 line="""
 181031 Wed
 09,24 Act1
@@ -42,11 +47,13 @@ line="""
 13,56 Act4
 13,56 Act5
 """
+</code></pre>  
 
 # How to run
 1. Open main.py
 2. Copy and paste your time to main.py
-For example,
+For example,  
+<pre><code>
 line="""
 181031 Wed
 09,24 Act1
@@ -55,6 +62,8 @@ line="""
 12,58 Act3
 13,56 Act4
 """
+</code></pre>  
+
 3. Write save place of being created html file to main.py
 For example,
 sp_hf="/home/young"
