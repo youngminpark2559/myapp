@@ -64,9 +64,9 @@ sp_hf="/home/young"
 2) python main.py
 
 # Example
-1. Write time text
+1. Write time text  
 ![001_line](https://raw.githubusercontent.com/youngminpark2559/myapp/master/manage/myth/pics/001_line.png)
-2. Get html table code from above time text
+2. Get html table code from above time text  
 ![002_html_table_code](https://raw.githubusercontent.com/youngminpark2559/myapp/master/manage/myth/pics/002_html_table_code.png)
-3. Create html file from above html table code
+3. Create html file from above html table code  
 ![003_html](https://raw.githubusercontent.com/youngminpark2559/myapp/master/manage/myth/pics/003_html.png)
