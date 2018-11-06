@@ -69,8 +69,8 @@ For example,
 sp_hf="/home/my_com"
 
 4. Run main.py  
-1\) Move to directory where main.py is stored  
-2\) python main.py
+1\) Move to directory where main.py is stored in command line  
+2\) Run main.py by typing python main.py in command line
 
 # Example
 1. Write time text  
