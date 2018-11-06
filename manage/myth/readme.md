@@ -21,7 +21,7 @@ line="""
 </pre></code>
 
 2. Compact
-```
+<pre><code>
 line="""
 181031 Wed
 09,24 Act1
@@ -31,7 +31,7 @@ line="""
 13,56 Act4
 13,56 Act5
 """
-```
+</pre></code>
 
 3. Mixed
 <pre><code>
@@ -50,9 +50,9 @@ line="""
 </code></pre>  
 
 # How to run
-1. Open main.py
+1. Open main.py  
 2. Copy and paste your time to main.py  
-For example,  
+For example,
 <pre><code>
 line="""
 181031 Wed
@@ -65,11 +65,11 @@ line="""
 </code></pre>  
 
 3. Write save place of being created html file to main.py  
-For example,
+For example,  
 sp_hf="/home/young"
 
-4. Run main.py
-1\) Move to directory where main.py is stored
+4. Run main.py  
+1\) Move to directory where main.py is stored  
 2\) python main.py
 
 # Example
