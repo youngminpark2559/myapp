@@ -12,6 +12,8 @@ line="""
 
 13,56 Act4
 """
+# c sp_hf: save place of html file
+sp_hf="/home/my_com"
 
 # c li: temp list
 li=line.replace("\n","*").replace("**","*").split("*")
@@ -44,3 +46,6 @@ proc2="["+proc1+"]"
 # Process json format string into html markup language
 html_mu=json2html.convert(json = proc2)
 print(html_mu)
+
+with open(sp_hf+"/manage_your_time_history.html", "a") as f:
+    f.write(html_mu)
