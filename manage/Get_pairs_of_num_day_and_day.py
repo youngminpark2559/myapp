@@ -1,6 +1,15 @@
 import calendar
 
 # --------------------------------------------------
+# How to use:
+# 1. Change year
+# 2. Change month
+# 3. Change start_day
+# 4. Run by excuting following
+# cd /folder_where_this_file_is_store
+# python Get_pairs_of_num_day_and_day.py
+
+# --------------------------------------------------
 # Test for March, 2019
 days=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"]
 year="2019"
