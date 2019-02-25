@@ -1,3 +1,7 @@
+# source activate base &&\
+# cd /mnt/1T-5e7/mycodehtml/myapp/ &&\
+# rm e.l && python channel9.py 2>&1 | tee -a e.l && code e.l
+
 import requests
 from bs4 import BeautifulSoup
 import json
@@ -27,7 +31,7 @@ def videolistwithtitle(nums_list):
     # re = BeautifulSoup(r.text)
 
     videolist=soup.select('h3 > a[href]')
-    print('page: '+str(i))
+    print('\npage: '+str(i))
     for onevideo in videolist:
       refinedaddress=str(onevideo).replace('<a href="','https://channel9.msdn.com/')\
                                   .replace('">',  '\nabove video\'s title : ')\
@@ -44,7 +48,7 @@ def videolistwithouttitle(nums_list):
     # re = BeautifulSoup(r.text)
 
     videolist=soup.select('h3 > a[href]')
-    print('page'+str(i))
+    print('\npage: '+str(i))
 
     listHolder=[]
 
@@ -65,7 +69,7 @@ def videolistwithMp3list(nums_list):
     # re = BeautifulSoup(r.text)
 
     videolist=soup.select('h3 > a[href]')
-    print('page'+str(i))
+    print('\npage: '+str(i))
 
     for onevideo in videolist:
       refinedaddress=str(onevideo).replace('<a href="','https://channel9.msdn.com/')\
@@ -96,7 +100,7 @@ def videolistwithMp3list(nums_list):
         except:
           pass
 
-if __name__ == '__main__':
+if __name__=='__main__':
   url='https://channel9.msdn.com/Browse/AllContent'
   r=requests.get(url)
   c=r.content
