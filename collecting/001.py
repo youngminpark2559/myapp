@@ -1,7 +1,3 @@
-# source activate base &&\
-# cd /mnt/1T-5e7/mycodehtml/myapp/ &&\
-# rm e.l && python channel9.py 2>&1 | tee -a e.l && code e.l
-
 import requests
 from bs4 import BeautifulSoup
 import json
