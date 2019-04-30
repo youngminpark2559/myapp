@@ -13,22 +13,17 @@ from pathlib import Path
 
 # sql_transaction = []
 browser=webdriver.Chrome("/home/young/chromedriverfolder/chromedriver")
-# 2 address
-# address_list=["https://www.youtube.com/watch?v=qj9-9c6DJCs","https://www.youtube.com/watch?v=ippg-fn61_4"]
-# 3 address
-# address_list=["https://www.youtube.com/watch?v=qj9-9c6DJCs","https://www.youtube.com/watch?v=ippg-fn61_4","https://www.youtube.com/watch?v=nZ1cV-PcBPc"]
-# full address
-# address_list=["https://www.youtube.com/watch?v=qj9-9c6DJCs","https://www.youtube.com/watch?v=ippg-fn61_4","https://www.youtube.com/watch?v=nZ1cV-PcBPc","https://www.youtube.com/watch?v=stGPHxtQLZw","https://www.youtube.com/watch?v=6KpibWZr0ME&t","https://www.youtube.com/watch?v=zpEq3gBpBs4","https://www.youtube.com/watch?v=qDXEs5YBfTk"]
-address_list=["https://www.youtube.com/watch?v=KshpDBbpmQA",
-"https://www.youtube.com/watch?v=X3aLv6N5pCE&t",
-"https://www.youtube.com/watch?v=bH7b8TZLNSk&t",
-"https://www.youtube.com/watch?v=74yf7f3FNDU",
-"https://www.youtube.com/watch?v=KKbhrvWy2JQ&t",
-"https://www.youtube.com/watch?v=L6aZA4Jz57Y",
-"https://www.youtube.com/watch?v=js4w9MN8Da4&t",
-"https://www.youtube.com/watch?v=-B0kzKkcuX4&t",
-"https://www.youtube.com/watch?v=Cwc8gLiZ3Sk",
-"https://www.youtube.com/watch?v=ic7nJ42GA3A"]
+address_list=[
+    "https://www.youtube.com/watch?v=zk3ko63OR1k",
+    "https://www.youtube.com/watch?v=bqpQX3IxqRQ",
+    "https://www.youtube.com/watch?v=SnAzakADJAI",
+    "https://www.youtube.com/watch?v=9S_ZxeyeOtI",
+    "https://www.youtube.com/watch?v=sikMXnZ9ta0",
+    "https://www.youtube.com/watch?v=UUPHkPINEzA",
+    "https://www.youtube.com/watch?v=Z6GbK9omVAU",
+    "https://www.youtube.com/watch?v=l3ozvprpNuE",
+    "https://www.youtube.com/watch?v=IUvW9GwT7Bk",
+    "https://www.youtube.com/watch?v=wbv5bUErdX0"]
 
 data_dictionary={}
 
@@ -141,16 +136,17 @@ number_of_column=len(entire_data_list_from_csv[0])
 
 number_of_row_tries=df.shape[0]
 number_of_element_of_data=4
-address_list=["https://www.youtube.com/watch?v=KshpDBbpmQA",
-"https://www.youtube.com/watch?v=X3aLv6N5pCE&t",
-"https://www.youtube.com/watch?v=bH7b8TZLNSk&t",
-"https://www.youtube.com/watch?v=74yf7f3FNDU",
-"https://www.youtube.com/watch?v=KKbhrvWy2JQ&t",
-"https://www.youtube.com/watch?v=L6aZA4Jz57Y",
-"https://www.youtube.com/watch?v=js4w9MN8Da4&t",
-"https://www.youtube.com/watch?v=-B0kzKkcuX4&t",
-"https://www.youtube.com/watch?v=Cwc8gLiZ3Sk",
-"https://www.youtube.com/watch?v=ic7nJ42GA3A"]
+address_list=[
+    "https://www.youtube.com/watch?v=zk3ko63OR1k",
+    "https://www.youtube.com/watch?v=bqpQX3IxqRQ",
+    "https://www.youtube.com/watch?v=SnAzakADJAI",
+    "https://www.youtube.com/watch?v=9S_ZxeyeOtI",
+    "https://www.youtube.com/watch?v=sikMXnZ9ta0",
+    "https://www.youtube.com/watch?v=UUPHkPINEzA",
+    "https://www.youtube.com/watch?v=Z6GbK9omVAU",
+    "https://www.youtube.com/watch?v=l3ozvprpNuE",
+    "https://www.youtube.com/watch?v=IUvW9GwT7Bk",
+    "https://www.youtube.com/watch?v=wbv5bUErdX0"]
 number_of_site=len(address_list)
 
 for i in range(number_of_column):
